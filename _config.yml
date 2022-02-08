@@ -20,7 +20,7 @@ url:                   https://nohhow.github.io
 lang:                  ko-KR, en-US
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 Noh-how 개발블로그
+title:                 Noh-how개발블로그
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
