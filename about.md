@@ -22,7 +22,7 @@ redirect_from:
 퍼플네스트가 운영하는 **퍼플스토어**에 신규 고객 유입을 높이기 라는 미션을 받았고  
 퍼플스토어 신규 방문 고객이 퍼플스토어의 '사료 안전성' 가치를 인식하기 어렵다는 것을 문제 삼았고 회사 소개 페이지를 개편하였습니다.  
 
-![image](/assets/img/me/presentation_purple.jpeg){:.border.lead width="600" height="164" loading="lazy"}
+![image](/assets/img/me/presentation_purple.jpeg)
 [결과물](https://purplesto.re/introduction)
 
 ## 제이탑미래기술 인턴십 - WEM 노코드 개발
