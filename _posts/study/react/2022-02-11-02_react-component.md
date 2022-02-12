@@ -7,7 +7,9 @@ description: >
   John Ahn님의 [Project-Lion] The Origin-React 강의를 듣고 정리한 내용입니다.
 sitemap: false
 categories:
+  - study
   - react
+
 ---
 
 # React Component, 리액트 컴포넌트
