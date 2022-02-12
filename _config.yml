@@ -50,10 +50,6 @@ author:
 menu:
   - title:             About
     url:               /about/
-  - title:             Example1
-    url:               /example1/
-  - title:             Example2
-    url:               /example2/
   - title:             Study
     url:               /study/
     subtitle:
