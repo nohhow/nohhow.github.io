@@ -33,3 +33,22 @@
 .nav-btn-bar{
   height: 3rem;
 }
+
+.author-body-description{
+  margin-left : 20px;
+}
+
+.content .avatar {
+    float: right;
+    box-sizing: content-box;
+    border: 1rem solid var(--body-bg);
+    transition: border-color 1s ease;
+    margin-top: 1rem !important;
+    margin-right: -1rem;
+}
+
+.post-date{
+  display : inline-block !important;
+  margin-bottom : 1rem !important;
+  height : auto !important;
+}
