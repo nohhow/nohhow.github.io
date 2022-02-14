@@ -26,8 +26,8 @@ description: >
 
 * [React]{:.heading.flip-title} --- 리액트 스터디
 * [Algorithm]{:.heading.flip.title} --- 알고리즘 스터디
-* [Markdown]{:.heading.flip.title} --- 마크다운 스터디
+* [etc.]{:.heading.flip.title} --- 기타 스터디
 
 [React]: /react/
 [Algorithm]: /algorithm/
-[Markdown]: /markdown/
+[etc.]: /etc/

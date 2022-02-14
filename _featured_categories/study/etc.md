@@ -1,8 +1,8 @@
 ---
 layout: list
 category: study
-bigtitle: Markdown
-slug : markdown
+bigtitle: Etc
+slug : etc
 description: >
   Markdown Study
 
