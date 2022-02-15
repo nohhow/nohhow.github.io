@@ -1,10 +1,10 @@
 ---
 layout: list
 category: study
-bigtitle: Etc
+bigtitle: etc.
 slug : etc
 description: >
-  Markdown Study
+  etc. Study
 
 related_posts:
   -
