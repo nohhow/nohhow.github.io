@@ -43,3 +43,7 @@ categories:
 바뀐 부분을 찾는 과정을 **Diffing**이라고 부르며, 바뀐 부분만 실제 돔에 적용시키는 것을 **재조정(reconciliation)**이라고 한다.
 
 => 만약 요소 30개가 변화하였다고 하더라도 한 번에 묶어서 한 번의 실제 돔 수정으로 처리하게 돼서 돔을 조작하는 비용 감소  
+
+---
+가상 돔 관련 참고할만한 글
+* [https://moonsbeen.tistory.com/255](https://moonsbeen.tistory.com/255)
