@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [To-do-List] Intro & JSX
+title: (To-do-List) Intro & JSX
 image:
   path: /assets/img/blog/jeremy-bishop@0,5x.jpg
 description: >

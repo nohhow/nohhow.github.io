@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [To-do-List] Start Dev To-do-List
+title: (To-do-List) Start Dev To-do-List
 image:
   path: /assets/img/blog/jeremy-bishop@0,5x.jpg
 description: >
