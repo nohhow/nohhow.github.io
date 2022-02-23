@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [To-do-List 앱 만들기] To-do 앱 소개 및 JSX 알아보기
+title: [To-do-List] Intro & JSX
 image:
   path: /assets/img/blog/jeremy-bishop@0,5x.jpg
 description: >
