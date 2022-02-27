@@ -11,7 +11,7 @@ categories:
   - react
 
 ---
-# To-do-List 앱 소개 및 JSX 알아보기
+# [To-do-List] 앱 소개 및 JSX 알아보기
 
 ### To-do-List 앱 소개
 

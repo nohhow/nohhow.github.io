@@ -11,7 +11,7 @@ categories:
   - react
 
 ---
-# To-do-List 앱 만들기 시작
+# [To-do-List] 앱 만들기 시작
 
 App.js 기본 구조
 
