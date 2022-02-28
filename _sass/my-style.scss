@@ -53,11 +53,57 @@
   height : auto !important;
 }
 
-.markdown-body {
-  under {
-    text-decoration: underline;
-    text-decoration-color: red !important;
-    text-underline-position:under;
-    padding-bottom : 2px;
+// 이전, 다음 버튼
+.page-control {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-control > div{
+  max-width: 50%;
+}
+
+.page-control > div > a{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+// 메뉴
+.spread-btn{
+  right: 15%;
+  position: absolute;
+  padding: 0;
+  padding-top: 2px;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu-wrapper {
+  text-align: center;
+}
+.submenu.menu-wrapper{
+  right: 10%;
+  position: absolute;
+  background-color: rgb(53,114,161);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  width: 10rem;
+  z-index: 2;
+  ul{
+    margin: 0;
+    padding: 0 1.25rem;
   }
+}
+.submenu.menu-wrapper.hide{
+  display: none;
+}
+
+a::after {
+  display : none !important;
 }

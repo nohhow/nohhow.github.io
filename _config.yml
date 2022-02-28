@@ -52,7 +52,7 @@ menu:
     url:               /about/
   - title:             Study
     url:               /study/
-    subtitle:
+    submenu:
       - title :        React
         url   :        /react/
       - title :        Algorithm
