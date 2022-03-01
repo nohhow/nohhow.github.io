@@ -70,3 +70,50 @@ devDependencies에 삽입되어있는 것을 볼 수 있다.
 @tailwind components;
 @tailwind utilities;
 ```
+
+---
+
+### 자주쓰는 Class Utility
+
+1. 마진(Margin)
+```
+m-1 // margin, 숫자 1 = 0,25rem
+ml-1 // margin-left
+mr-1 // margin-right
+mt-1 // margin-top
+mb-1 // margin-bottom
+
+mx-1 // margin-left, margin-right
+my-1 // margin-top, margin-bottom
+```
+
+2. 패딩(Padding)
+```
+p-1 // padding
+.
+.
+.
+
+마진과 동일한 패턴
+```
+
+3. display = flex
+`flex`
+
+4. justify-content : ''
+`justify-between // justify-content = 'space-between'`
+
+5. align-items : center
+`items-center`
+
+6. width
+```
+w-full // width:100%
+w-4/5 // width:80%
+```
+
+7. border-width
+`border`
+
+8. border-radius
+`rounded`
