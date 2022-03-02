@@ -13,6 +13,9 @@ categories:
 ---
 # [To-do-List] 프로젝트 최적화 (React.memo, useMemo, useCallback)
 
+* toc
+{:toc .large-only}
+
 ### React.memo를 이용한 컴포넌트 최적화
 
 #### 현재 To-Do 앱 문제점

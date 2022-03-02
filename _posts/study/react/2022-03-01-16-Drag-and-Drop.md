@@ -13,6 +13,9 @@ categories:
 ---
 # HTML 드래그 앤 드롭
 
+* toc
+{:toc .large-only}
+
 >* HTML 드래그 앤 드롭 API를 사용해서 원하는 항목을 드래그 할 수 있도록 할 수 있다.
  [Mozilla 문서 바로가기](https://developer.mozilla.org/ko/docs/Web/API/HTML_Drag_and_Drop_API)
 > * 사용자가 드래그를 할 때 적절한 애니메이션을 부여한다.

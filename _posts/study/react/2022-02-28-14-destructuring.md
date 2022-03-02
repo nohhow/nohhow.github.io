@@ -12,6 +12,10 @@ categories:
 
 ---
 # 구조분해할당(Destructuring)
+
+* toc
+{:toc .large-only}
+
 배열이나 객체의 속성을 해체하여 그 값을 개별 변수에 담을 수 있게 하는 JavaScript표현식(ES6)
 
 <mark>Clean Code를 위해서 사용</mark>
