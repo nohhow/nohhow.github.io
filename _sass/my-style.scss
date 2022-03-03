@@ -1,3 +1,12 @@
+//메인 페이지 title 크기 조절
+h1.post-title > a.flip-title {
+  font-size: 2rem;
+}
+
+.lead{
+  margin-left : 0;
+}
+
 .dl-table {
   a {
     @supports ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
