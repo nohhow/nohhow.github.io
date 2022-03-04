@@ -24,7 +24,7 @@ categories:
 
 여기서 **문제**가 있다.
 
-Form 에서 text를 작성할 때, Form과 App 만 렌더일 되어야하지만, Log를 설정하고 확인해보면 Lists, List 컴포넌트도 함께 렌더링되고 있음을 알 수 있다.
+Form 에서 text를 작성할 때, Form과 App 만 렌더링 되어야하지만, Log를 설정하고 확인해보면 Lists, List 컴포넌트도 함께 렌더링되고 있음을 알 수 있다.
 
 #### 문제 해결 방법 : React.memo 적용
 각 컴포넌트 함수에 React.memo()적용
