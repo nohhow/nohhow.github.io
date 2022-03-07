@@ -50,6 +50,8 @@ author:
 menu:
   - title:             About
     url:               /about/
+  - title:             Posts
+    url:               /posts/
   - title:             Study
     url:               /study/
     submenu:
@@ -84,7 +86,7 @@ paginate_path:         /:num/
 # Theme
 # ---------------------------------------------------------------------------------------
 
-# theme: jekyll-theme-hydejack
+theme: jekyll-theme-hydejack
 remote_theme: hydecorp/hydejack@v9
 
 favicon: /assets/img/icons/favicon.ico
