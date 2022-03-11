@@ -2,7 +2,7 @@
 layout: post
 title: Portfolio site development memoir, with React
 image:
-  path: /assets/img/blog/jeremy-bishop@0,5x.jpg
+  path: https://user-images.githubusercontent.com/61059893/157826432-582d4822-626a-4812-996b-93539f92c845.png
 description: >
   포트폴리오 사이트 개발 회고
 sitemap: false
@@ -146,5 +146,5 @@ HTML과 CSS, Javascript는 선택의 여지가 없고
 
 ---
 
-#### 개발부터 반응형 대응까지는 다음 게시물에서
+### 개발부터 반응형 대응까지는 다음 게시물에서
 여기에 링크를 작성할 예정입니다.
