@@ -90,16 +90,18 @@ HTML과 CSS, Javascript는 선택의 여지가 없고
 * 하단 스크롤만으로 모든 내용을 훑어볼 수 있도록 항목들을 배치
 
 2. 기본 골격
-~~~html
+
+```html
  <nav>
  <section id="intro">
  <section id="about-me">
  <section id="skills">
  <section id="projects">
  <footer>
-~~~
+```
 
 3. 구성 요소
+
 ~~~
 ✔️ Nav : 브랜드명 = '노진현 포트폴리오', 메뉴는 Section 항목들로 구성
 ✔️ Intro : 시선을 사로잡는 이미지나 문구로 '나'를 표현하기
