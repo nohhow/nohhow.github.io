@@ -43,6 +43,12 @@ h1.post-title > a.flip-title {
   height: 3rem;
 }
 
+.search-form{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .author-body-description{
   margin-left : 20px;
 }
