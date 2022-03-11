@@ -29,9 +29,29 @@
                         <input type="text" name="q" id="tipue_search_input" pattern=".{1,}" title="At least 1 characters" required></div>
                     <div style="clear: both;"></div>
                 </form>
+                <button class="search-button">
+                  <img src="/assets/tipuesearch/search.png" width="32" class="tipue_search_icon">
+                </button>
             </div>
-
         </div>
     </div>
 </div>
+
 <hr class="sr-only" hidden />
+
+<script>
+  document.querySelector(".search-button").onclick = () => {
+    const topMenu = document.querySelector(".top-menu");
+    if(topMenu.style.display !== "none"){
+      topMenu.style.display = "none";
+      document.querySelector(".search-form").style.display = "flex";
+      document.querySelectorAll("img.tipue_search_icon")[1].src="/assets/tipuesearch/close.png"
+    }else{
+      topMenu.style.display = "inline-block";
+      document.querySelector(".search-form").style.display = "none";
+      document.querySelectorAll("img.tipue_search_icon")[1].src="/assets/tipuesearch/search.png"
+    }
+  };
+
+
+</script>

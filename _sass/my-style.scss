@@ -43,10 +43,24 @@ h1.post-title > a.flip-title {
   height: 3rem;
 }
 
-.search-form{
+.nav-span {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.search-form{
+  display: none;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-button{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: inherit !important;
+  border: none;
 }
 
 .author-body-description{
