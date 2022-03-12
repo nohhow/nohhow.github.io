@@ -57,6 +57,8 @@ menu:
     submenu:
       - title :        React
         url   :        /react/
+      - title :        Javascript
+        url   :        /javascript/
       - title :        Algorithm
         url   :        /algorithm/
       - title :        etc.

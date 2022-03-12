@@ -2,7 +2,7 @@
 layout: post
 title: (To-do-List) Project Optimization with React.memo
 image:
-  path: /assets/img/blog/jeremy-bishop@0,5x.jpg
+  path: /assets/img/thumbnail/react.png
 description: >
   John Ahn님의 [Project-Lion] The Origin-React 강의를 듣고 정리한 내용입니다.
 sitemap: false
@@ -58,7 +58,7 @@ useCallback은 useCallback 안에 콜백함수와 의존성 배열을 순서대�
 
 의존성 배열에 포함되어있는 참조값들이 변할 때에 다시 함수를 생성하게 된다.
 ```javascript
-const handleClick = useCallback( () => {}, [참조값] )
+const handleClick = useCallback( () => {}, [참조값] );
 ```
 ---
 
