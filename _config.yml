@@ -25,10 +25,10 @@ title:                 Noh-how 개발 블로그
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  최선을 다하면 최고가 될 것이라고 믿는 성실함이 자랑인 개발자
+  경험과 공유를 중요하게 생각하는 개발자 노진현의 블로그 입니다.
 
 # A shorter description for the sidebar.
-tagline:               Noh 진현의 개발 know-how => Noh-how
+tagline:               Noh's Dev Blog
 
 # A list of keywords for your blog
 keywords:              [웹개발, 교육, 노코드]
