@@ -37,25 +37,29 @@ categories:
 ### API URL
 
 1. GET Movie BY Latest
+
 ```
 https://api.themoviedb.org/3/movie/latest?api_key=<api_key>
 ```
 
 2. GET Movie Detail
+
 ```
 https://api.themoviedb.org/3/movie/{movie_id}?api_key=<api_key>
-
 ```
 
 3. GET Movie Reviews
+
 ```
 https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<api_key>
 ```
 
 4. GET Images
+
 ```
 https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg
 ```
+
 * original은 이미지 사이즈를 말함. w500과 같은 값을 줘서 이미지 크기 조절하여 호출가능
 
 
