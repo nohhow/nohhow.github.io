@@ -490,3 +490,186 @@ const result = arr.reduce((prev, cur) => {
 }, 0)
 console.log(result); // 15
 ```
+---
+
+## 구조 분해 할당 Destructuring assignment
+
+구조 분해 할당 구문은 배열이나 객체의 속성을 분해해서 그 값을 변수에 담을 수 있게 하는 표현식이다.
+
+### 배열 구조 분해
+
+**기본 구조**
+```javascript
+let users = ["Mike", "Den", "Ryan"];
+let [user1, user2, user3] = users;
+
+console.log(user1, user2, user3); // Mike Den Ryan
+```
+
+**기본값 부여**
+할당될 값이 없을 때 undefined가 할당되는데, 이를 방지하기 위해서 기본값을 부여해줄 수 있다.
+할당되는 값이 기본값보다 우선임.
+```javascript
+let [a=3, b=3, c=3] = [1, 2]; // c=3을 기본값으로 부여하지 않았다면 undefined가 할당될 것임
+
+console.log(a, b, c); // 1 2 3
+```
+**반환값 무시**
+반환값을 건너뛰고자한다면 `공백 + ,`로 해당 위치의 값을 무시할 수 있다.
+```javascript
+let [user1, ,user2] = ["Mike", "Den", "Ryan"];
+console.log(user1, user2); //Mike Ryan
+```
+
+**바꿔치기**
+```javascript
+let a = 1;
+let b = 2;
+
+[a, b] = [b, a];
+console.log(a,b); //2 1
+```
+
+### 객체 구조 분해
+**기본 구조**
+```javascript
+let user = {name : "Mike", age: 30};
+let {age, name} = user;
+
+console.log(name, age); // Mike 30
+```
+
+**새로운 변수 이름으로 할당**
+```javascript
+let user = {name : "Mike", age: 30};
+let {age:userAge, name:userName} = user;
+
+console.log(userName, userAge); // Mike 30
+```
+**기본값 부여**
+배열에서와 마찬가지로 할당되는 값이 없을 때 기본값으로 할당될 값을 지정해줄 수 있다. 기본값이 있다고 하더라도 할당되는 값이 우선임.
+```javascript
+let user = {
+  name : 'Mike',
+  age: 18
+};
+
+let {name, age, gender ='male'} = user;
+console.log(gender); // 'male'
+```
+---
+
+## 나머지 매개변수, 전개 구문
+
+함수에 값을 전달하는 방법으로 전통적인 방식으로 arguments를 사용하였으나 최근(es6)에는 나머지 매개 변수를 많이 사용하는 추세이다.
+
+> **arguments**
+- 함수로 넘어 온 모든 인수에 접근
+- 함수내에서 이용 가능한 지역 변수
+- length / index
+- Array 형태의 객체
+- 배열의 내장 메서드 없음
+
+```javascript
+function showName(name){
+  console.log(arguments.length);
+  console.log(arguments[0]);
+  console.log(arguments[1]);
+}
+
+showName('Mike', 'Tom');
+//2
+//'Mike'
+//'Tom'
+```
+
+### 나머지 매개변수
+정해지지 않은 갯수의 인수를 배열로 나타낼 수 있게 한다.
+나머지 매개 변수는 매개 변수들 중 가장 마지막에 위치해야한다.
+```javascript
+function showName(...names){
+  console.log(names);
+}
+
+showName(); // []
+showName('Mike'); // ['Mike']
+showName('Mike', 'Tom'); // ['Mike', 'Tom']
+```
+
+### 전개 구문 Spread Syntax
+
+#### 배열에서
+```javascript
+let arr1 = [1,2,3];
+let arr2 = [4,5,6];
+
+let result = [...arr1, ...arr2];
+console.log(result); // [1,2,3,4,5,6]
+```
+
+#### 객체에서
+```javascript
+let user = {name:'Mike'};
+let mike = {...user, age:30};
+
+console.lgo(mike); // {name: "Mike", age : 30}
+```
+`Object.assign`을 사용하지 않아도 객체를 복제할 수도 있다.
+```javascript
+let user1 = {name : 'Mike', age: 30};
+let user2 = {...user1}
+
+user2.name = 'Den';
+// 원본 값은 그대로 두고 복제된 것을 확인할 수 있다.
+console.log(user1); // {"name" : "Mike", "age" : 30}
+console.log(user2); // {"name" : "Den", "age" : 30}
+```
+
+---
+
+## 클로저 Closure
+클로저는 함수와 함수가 선언된 어휘적 환경의 조합이다.
+함수가 처리되기 위해서 함수 안의 지역 변수들은 처리되는 동안 존재하는데, 클로저가 형성되면 이 때 생성된 지역 변수들을 참조하며 값을 저장하고 있게 된다.
+
+그래서 다음과 같이 서로 다른 맥락(어휘)적 환경을 저장한 `add5`, `add10`는 같은 함수를 통해서 생성되었지만 저장된 값이 다르기 때문에 다른 값을 출력하는 것을 볼 수 있다.
+```javascript
+function makeAdder(x) {
+  var y = 1;
+  return function(z) {
+    y = 100;
+    return x + y + z;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+//클로저에 x와 y의 환경이 저장됨
+
+console.log(add5(2));  // 107 (x:5 + y:100 + z:2)
+console.log(add10(2)); // 112 (x:10 + y:100 + z:2)
+//함수 실행 시 클로저에 저장된 x, y값에 접근하여 값을 계산
+```
+
+추가로 학습해야하는 영역이라는 생각이 든다.
+
+---
+
+## setTimeout / setInterval : 스케줄링
+
+### setTimeout
+setTimeout은 일정 시간 뒤에 동작을 실행시켜주는 함수이다.
+기본적으로 매개 변수를 2개 받는데, 첫 번째는 함수, 두 번째는 지연시킬 시간을 ms단위로 입력 받는다.
+추가로 함수가 매개변수를 취하는 경우, 3번째 매개 변수로 인수를 둘 수 있다.
+
+```javascript
+funciton fn(){
+  console.log(3)
+}
+
+setTimeout(fn, 3000);
+```
+setTimeout이 반환하는 id를 입력받아 `clearTimeout()`를 실행하면 setTimeout에 의해 예정된 동작을 없앨 수 있다.
+
+### setInterval
+`setTimeout`은 한 번만 수행하는 것과 다르게 `setInterval`은 시간마다 반복적으로 수행한다.
+마찬가지로 중단하기 위해서는 `clearTimeout()`을 실행하면 된다.
