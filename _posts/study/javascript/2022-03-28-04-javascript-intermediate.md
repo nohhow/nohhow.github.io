@@ -673,3 +673,71 @@ setTimeout이 반환하는 id를 입력받아 `clearTimeout()`를 실행하면 s
 ### setInterval
 `setTimeout`은 한 번만 수행하는 것과 다르게 `setInterval`은 시간마다 반복적으로 수행한다.
 마찬가지로 중단하기 위해서는 `clearTimeout()`을 실행하면 된다.
+
+---
+
+## call, apply, bind
+
+함수 호출 방식과 관계없이 this를 지정할 수 있다.
+
+### call
+
+모든 함수에서 사용할 수 있으며, this를 특정값으로 지정할 수 있다.
+
+```javascript
+const ryan = {
+  name : "Ryan",
+  age : 26
+}
+
+function showName() {
+  console.log(this.name);
+}
+
+showName(); // ""
+showName.call(ryan); // Ryan
+```
+
+### apply
+
+apply는 call과 사용하는 방식이 거의 동일하나, 사용하는 함수에 추가적으로 매개변수를 전달해야하는 경우, call은 직접 입력받지만, apply는 매개변수를 배열로 받는다.
+
+```javascript
+const ryan ={
+  name : "Ryan"
+}
+
+function update(number, age) {
+  this.phoneNumber = number;
+  this.age = age;
+}
+
+//update.call(ryan, "01011112222", 26) //아래와 동일한 동작
+update.apply(ryan, ["01011112222", 26])
+```
+
+### bind
+
+함수의 this 값을 영구히 변경할 수 있다.
+
+```javascript
+const user ={
+  name : "Ryan",
+  showName : function() {
+    console.log(`hello ${this.name}`);
+  }
+}
+
+user.showName(); // hello Ryan
+
+let fn = user.showName;
+
+fn(); // Hello
+
+// bind 사용해서 함수 생성
+let boundFn = fn.bind(user);
+
+boundFn(); // hello Ryan
+```
+
+---
