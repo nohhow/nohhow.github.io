@@ -8,9 +8,9 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-  "세상을 이롭게 하는 프로그램/서비스를 만드는 것에 기여하고 싶습니다."
+    "세상을 이롭게 하는 프로그램/서비스를 만드는 것에 기여하고 싶습니다."
 
-  문제 해결 과정을 즐기고, 다양한 경험 속에서 성장을 만들어내기 위해서 노력합니다.
+    문제 해결 과정을 즐기고, 다양한 경험 속에서 성장을 만들어내기 위해서 노력합니다.
 
 
   # Please check my [CV](/assets/CV.pdf)
