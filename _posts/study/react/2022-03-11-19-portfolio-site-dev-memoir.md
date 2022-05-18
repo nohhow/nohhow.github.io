@@ -147,4 +147,4 @@ HTML과 CSS, Javascript는 선택의 여지가 없고
 ---
 
 ### 개발부터 반응형 대응까지는 다음 게시물에서
-여기에 링크를 작성할 예정입니다.
+[여기](https://nohhow.github.io/study/react/2022-03-11-26-portfolio-site-dev-memoir-tech/)서 다음 내용(개발, 미디어 대응)이 이어집니다.
