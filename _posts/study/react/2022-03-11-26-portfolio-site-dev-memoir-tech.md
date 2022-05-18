@@ -212,7 +212,7 @@ const handleMouseOut = () => {
 
 ### 미디어별 대응 - 반응형
 
-미디어별 대응을 위해서 `react-bootstrap`에 많이 의존했다. 아무래도 greid-system이 잘 되어있다 보니 단순한 한 페이지짜리 포트폴리오를 만들 때 적합하다고 생각했다.
+미디어별 대응을 위해서 `react-bootstrap`에 많이 의존했다. 아무래도 grid-system이 잘 되어있다 보니 단순한 한 페이지짜리 포트폴리오를 만들 때 적합하다고 생각했다.
 
 bootstrap의 힘이 닿지 않는 부분에는 별도로 bootstrap에서의 BreakPoint 기준에서 Medium 사이즈에 해당하는 768이하의 스크린 사이즈와 그 이상의 스크린 사이즈에 대해서만 구분하여 대응해주었다.
 
