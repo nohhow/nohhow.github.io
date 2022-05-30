@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Code Editor와 친해지기 (vscode, atom, pycharm)
+title: Homebrew MySQL 명령어 정리
 image:
   path: https://source.unsplash.com/random
 description: >
-  Sql 기초 문법
+  Homebrew MySQL 명령어 정리
 sitemap: false
 categories:
   - study
