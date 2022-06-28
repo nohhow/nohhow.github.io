@@ -628,6 +628,9 @@ console.log(user2); // {"name" : "Den", "age" : 30}
 ---
 
 ## 클로저 Closure
+
+> **함수와 렉시컬 환경의 조합**
+
 클로저는 함수와 함수가 선언된 어휘적 환경의 조합이다.
 함수가 처리되기 위해서 함수 안의 지역 변수들은 처리되는 동안 존재하는데, 클로저가 형성되면 이 때 생성된 지역 변수들을 참조하며 값을 저장하고 있게 된다.
 
@@ -650,7 +653,46 @@ console.log(add10(2)); // 112 (x:10 + y:100 + z:2)
 //함수 실행 시 클로저에 저장된 x, y값에 접근하여 값을 계산
 ```
 
-추가로 학습해야하는 영역이라는 생각이 든다.
+
+이런 예시도 있다.
+
+```javascript
+function makeCounter() {
+  let num = 0;
+
+  return function () {
+    return num++;
+  };
+}
+
+let counter = makeCounter();
+
+console.log(counter()); //0
+console.log(counter()); //1
+console.log(counter()); //2
+
+```
+
+위와 같은 경우에는 `num`을 **은닉화**한 것으로, `counter()`를 호출할 때마다 `num`의 값이 참조되기 때문에 값이 증가하는 것을 알 수 있는데, 이 값은 외부에서 수정할 수 없다. 이를보고 은닉했다고 이야기하는 것 같다.
+
+함수 렉시컬 환경에서 `num`이 `++` 되는 것이기 때문에 다음과 같이 변경하더라도 참조되는 num값이 증가하기 때문에 동일한 현상(?)을 파악할 수 있었다.
+
+```javascript
+function makeCounter(){
+  let num = 0
+
+  return function(k){
+    return num++ + k
+  }
+}
+
+let counter = makeCounter()
+console.log(counter(1)) //1
+console.log(counter(1)) //2
+console.log(counter(1)) //3
+```
+
+개념 자체가 어려운 것은 아니지만 실제로 어떻게 사용할지 알아봐야겠다.
 
 ---
 
@@ -672,7 +714,7 @@ setTimeout이 반환하는 id를 입력받아 `clearTimeout()`를 실행하면 s
 
 ### setInterval
 `setTimeout`은 한 번만 수행하는 것과 다르게 `setInterval`은 시간마다 반복적으로 수행한다.
-마찬가지로 중단하기 위해서는 `clearTimeout()`을 실행하면 된다.
+마찬가지로 중단하기 위해서는 `clearInterval()`을 실행하면 된다.
 
 ---
 
@@ -683,6 +725,7 @@ setTimeout이 반환하는 id를 입력받아 `clearTimeout()`를 실행하면 s
 ### call
 
 모든 함수에서 사용할 수 있으며, this를 특정값으로 지정할 수 있다.
+해당 함수가 주어진 객체의 메서드인 것처럼 사용할 수 있다.
 
 ```javascript
 const ryan = {
@@ -732,7 +775,7 @@ user.showName(); // hello Ryan
 
 let fn = user.showName;
 
-fn(); // Hello
+fn(); // hello
 
 // bind 사용해서 함수 생성
 let boundFn = fn.bind(user);
@@ -741,3 +784,354 @@ boundFn(); // hello Ryan
 ```
 
 ---
+
+## 상속, Prototype
+
+### prototype
+객체에서 프로퍼티를 읽으려고 할 때, 없으면 `__proto__`에서 찾게 된다.
+즉 다음과 같이 hasOwnProperty 라는 프로퍼티를 임의로 생성해주면 __proto__의 hasOwnProperty를 읽어오는 것이 아니라 임의로 생성해준 hasOwnProperty를 읽는다.
+
+```javascript
+const user = {
+  name : 'Ryan',
+  hasOwnProperty : function(){
+    console.log('hi');
+  }
+}
+user.hasOwnProperty() // hi
+```
+
+이러한 특성을 이용해서 객체가 동일 속성을 갖는 상황에서 동일 속성에 대해서 한 번만 작성하고 상속해줄 수 있다.
+
+가장 흔한 예제 자동차 3사
+
+```javascript
+// 상속할 특성 car
+const car = {
+  wheels: 4,
+  drive() {
+    console.log("drive..");
+  }
+};
+
+const bmw = {
+  color: "red",
+  navigation: 1,
+};
+
+const benz = {
+  color : "black",
+};
+
+const audi = {
+  color : "blue",
+};
+
+bmw.__proto__ = car;
+benz.__proto__ = car;
+audi.__proto__ = car;
+
+console.log(audi.wheels) // 4
+// 그렇다고 기존에 가지고 있던 __proto__가 사라지는 것은 아니었습니다..!
+console.log(audi.hasOwnProperty('color')) // true
+```
+
+`__proto__`를 이용해서 상속해버리면 기존에 `hasOwnProperty`와 같은 메서드는 사라지는게 아닐까? 걱정했는데 다음과 같이 중첩되는 방식으로 `prototype`이 쌓이는 듯 하다.
+
+<img width="382" alt="스크린샷 2022-06-28 오후 9 21 51" src="https://user-images.githubusercontent.com/61059893/176177277-b3c25ded-ea7c-4870-b517-e417c683ec0a.png">
+
+객체 자신에게서 property가 있는지 확인하고 있으면 해당 값을 우선 참조하고 없으면 prototype에서 찾아서 참조한다는 것을 이해하면 상속으로 인해서 property가 겹칠 때 어떤 값을 참조하게 될지는 충분히 생각할 수 있다. (=prototype chain
+
+### for in 문 과 prototype
+for in 문을 사용하면 상속받은 property 항목을 모두 출력할 수 있다.
+
+```javascript
+const user = {
+  name : "Ryan"
+}
+
+const person = {
+  leg : 2
+}
+
+user.__proto__ = person
+for (p in user){
+  console.log(p); // name leg
+}
+```
+
+위 상황에서 Object.keys(user) 나 Object.values(user)의 경우는 어떤 결과를 나타낼까?
+
+```javascript
+Object.keys(user); // ['name']
+Object.values(user); // ['Ryan']
+```
+
+=> 상속받은 property는 제외하고 본인의 property만을 출력한다.
+
+
+### 생성자와 prototype
+
+생성자를 사용해서 객체를 생성하는 경우에는 다음과 같이 prototype을 상속시킬 수 있다. (중복 코드 줄일 수 있다.)
+
+```javascript
+const Bmw = function (color){
+  this.color = color;
+}
+
+Bmw.prototype.wheels = 4;
+Bmw.prototype.drive = function(){
+  console.log("drive.");
+}
+
+const x5 = new Bmw("red");
+const z4 = new Bmw("blue");
+
+// x5.__proto__ = car
+// z4.__proto__ = car
+```
+
+### constructor를 보장하지 않는 javascript
+
+위에서 작성한 코드를 다음과 같이 작성할 수도 있는데 이는 생성자로 생성된 인스턴스의 constructor가 맞는가? 라는 조건문에서 false를 반환하게 된다.
+
+```javascript
+const Bmw = function(color){
+  this.color = color;
+}
+
+Bmw.prototype = {
+  wheels: 4,
+  drive() {
+    console.log("drive.");
+  }
+}
+
+const x5 = new Bmw("red");
+
+console.log(z4.constructor === Bmw); // false
+```
+Bmw.prototype의 property로 constructor를 Bmw라고 명시해주는 방식으로 해결할 수 있다. 또는 위에서 사용한 방법을 사용하지 않고 일일히 명시해주면 된다.
+
+---
+
+## 클래스 class
+
+원래 객체를 생성하는 방법
+
+```javascript
+const User = function (name, age){
+  this.name = name;
+  this.age = age;
+  this.showName = function(){
+    console.log(this.name);
+  }
+}
+
+const mike = new User("Mike", 30);
+```
+
+es6에 추가된 class를 통해서 생성하는 방법
+
+```javascript
+class User2 {
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+  }
+  showName() {
+    console.log(this.name);
+  }
+}
+
+const tom = new User2("Tom", 19);
+```
+
+### 기존 객체 생성 방식과 class 객체 생성 방식의 차이
+
+> **첫 번째**
+* 기존 방식으로 객체를 생성한 `mike`는 `showName` 메서드가 객체 내부에 있는 반면에
+* class로 생성한 객체인 `tom`은 `showName`이 prototype 내부에 있다.
+
+
+> **두 번째**
+* 기존 방식으로 객체를 생성했을 때, new 키워드를 뺴먹었을 때 에러가 발생하지 않고 undefined가 반환된다.
+* class를 사용했을 때는 new 키워드를 빼놓고 작성하면 에러가 난다. (디버깅에서 유리)
+-> constructor에 class라고 명시되어있기 때문에 이를 검사하게 된다.
+
+> **세 번째**
+* 기존 방식에서는 for in 문을 활용해서 상속받은 property를 확인할 수 있다.
+* class 방식에서는 for in 문에서 상속받은 property가 표시되지 않는다.
+
+> **네 번째**
+상속 방식에서 차이가 있다.
+
+class에서는 extends라는 키워드를 사용한다.
+
+```javascript
+class Car {
+  constructor(color){
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("stop!");
+  }
+}
+
+class Bmw extends Car {
+  park(){
+    console.log("park!");
+  }
+}
+
+const z4 = new Bmw("blue");
+```
+
+### class 메소드 오버라이딩(method overriding)
+
+상속받는 객체에서 동일한 프로퍼티 키워드로 값을 저장하면 이를 우선 참조하기 때문에 overriding된다.
+그런데 부모의 값을 확장하여 사고 싶을 때는 `super` 키워드를 사용하면 된다.
+
+```javascript
+class Car {
+  constructor(color){
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("stop!");
+  }
+}
+
+class Bmw extends Car {
+  park(){
+    console.log("park!");
+  }
+  // overriding
+  stop(){
+    super.stop();
+    console.log("OFF");
+  }
+}
+
+const z4 = new Bmw("blue");
+
+console.log(z4.stop()); // STOP! OFF -> 부모의 stop과 overriding한 stop 모두 표시되는 것을 볼 수 있다.
+```
+
+### class 오버라이딩 (constructor overriding)
+
+> **잘못된 오버라이딩 예시 1**
+
+```javascript
+class Car {
+  constructor(color){
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("stop!");
+  }
+}
+
+class Bmw extends Car {
+  // overriding
+  constructor(){
+    this.navigation = 1;
+  }
+  park(){
+    console.log("park!");
+  }
+}
+
+const z4 = new Bmw("blue");
+```
+-> construtor를 오버라이딩 하기 위해서는 반드시 상속받는 객체의 construtor를 참조해야하기 때문에 `super()` 키워드를 사용햏야한다.
+
+> **잘못된 오버라이딩 예시 2**
+위의 실수를 만회하고자 super()를 사용했다.
+
+```javascript
+class Car {
+  constructor(color){
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("stop!");
+  }
+}
+
+class Bmw extends Car {
+  // overriding
+  constructor(){
+    super();
+    this.navigation = 1;
+  }
+  park(){
+    console.log("park!");
+  }
+}
+
+const z4 = new Bmw("blue");
+console.log(z4) // color : undefined navigation:1 wheels:4
+```
+-> color 값이 사라졌다! blue라는 값이 제대로 동작하기 위해서는 Car에서와 마찬가지로 overriding하는 객체에서도 매개변수로 color를 받아서 상속받는 객체로 넘겨줘야한다.
+
+> **제대로된 오버라이딩**
+
+```javascript
+class Car {
+  constructor(color){
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("stop!");
+  }
+}
+
+class Bmw extends Car {
+  // overriding
+  constructor(color){
+    super(color);
+    this.navigation = 1;
+  }
+  park(){
+    console.log("park!");
+  }
+}
+
+const z4 = new Bmw("blue");
+console.log(z4) // color :"blue" navigation:1 wheels:4
+```
+-> 여기에는 숨은 사실이 있다. 상속받는 객체, 즉 자식 객체의 생성자는 반드시 부모 객체의 생성자를 호출해야한다.
+
+constructor를 따로 overriding하지 않는 경우에 Bmw 객체는 다음과 같다. 이를 이해하면 오버라이딩 방식을 이해할 수 있다.
+
+```javascript
+class Bmw extends Car{
+  construtor(...args){
+    super(...args);
+  }
+  park() {
+    console.log("park!")
+  }
+}
+```
