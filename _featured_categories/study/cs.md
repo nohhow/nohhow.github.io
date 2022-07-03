@@ -1,8 +1,8 @@
 ---
 layout: list
 category: study
-bigtitle: cs
-slug : cs
+bigtitle: CS
+slug : CS
 description: >
   CS Study
 

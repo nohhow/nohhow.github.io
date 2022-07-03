@@ -8,7 +8,7 @@ description: >
 sitemap: false
 categories:
   - study
-  - etc
+  - cs
 
 ---
 # 프로그래밍과 로직/수학
