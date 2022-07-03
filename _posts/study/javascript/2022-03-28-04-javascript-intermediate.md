@@ -1028,6 +1028,8 @@ console.log(z4.stop()); // STOP! OFF -> 부모의 stop과 overriding한 stop 모
 
 ### class 오버라이딩 (constructor overriding)
 
+잘못된 오버라이딩 예시부터 살펴보면서 이해해본다.
+
 > **잘못된 오버라이딩 예시 1**
 
 ```javascript
