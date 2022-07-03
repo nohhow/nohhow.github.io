@@ -55,6 +55,8 @@ menu:
   - title:             Study
     url:               /study/
     submenu:
+      - title :        CS
+        url   :        /cs/
       - title :        React
         url   :        /react/
       - title :        Javascript
