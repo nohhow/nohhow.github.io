@@ -100,6 +100,11 @@ h1.post-title > a.flip-title {
   text-overflow: ellipsis;
 }
 
+// 하위메뉴창이 가려지는 문제 해결위한 오버라이딩
+.sidebar{
+  align-items: normal !important;
+}
+
 
 // 메뉴
 .spread-btn{
