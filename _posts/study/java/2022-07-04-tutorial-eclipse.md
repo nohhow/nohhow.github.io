@@ -2,13 +2,13 @@
 layout: post
 title: Eclipse 살펴보기
 image:
-  path: /assets/img/thumbnail/javascript.png
+  path: /assets/img/thumbnail/java.png
 description: >
   자바
 sitemap: false
 categories:
   - study
-  - javascript
+  - java
 
 ---
 # Eclipse 살펴보기
