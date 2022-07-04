@@ -27,6 +27,7 @@ description: >
 * [CS]{:.heading.flip-title} --- Computer Science 정리
 * [React]{:.heading.flip-title} --- 리액트 학습 정리
 * [Javascript]{:.heading.flip-title} --- 자바스크립트 학습 정리
+* [Java]{:.heading.flip-title} --- 자바 학습 정리
 * [Algorithm]{:.heading.flip.title} --- 알고리즘 학습 정리
 * [etc.]{:.heading.flip.title} --- 기타 학습 및 학습 자료 정리
 
@@ -35,3 +36,4 @@ description: >
 [Algorithm]: /algorithm/
 [etc.]: /etc/
 [Javascript]: /javascript/
+[Java]: /java/

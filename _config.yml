@@ -57,6 +57,8 @@ menu:
     submenu:
       - title :        CS
         url   :        /cs/
+      - title :        Java
+        url   :        /java/
       - title :        React
         url   :        /react/
       - title :        Javascript
