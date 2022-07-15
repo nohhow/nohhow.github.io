@@ -104,3 +104,19 @@ export PATH=${PATH}:$JAVA_HOME/bin
 ## Eclipse 설치
 
 Window와 macOS 상관없이 Eclipse 설치 링크를 통해서 각 OS에 맞는 파일 설치 진행
+
+### eclipse 설치 후 환경설정
+
+* Eclipse encoding 설정 : xml, html, css, json, workspace (utf-8로 설정)
+* Open perspective : default JAVA EE에서 JAVA로 변경
+
+### eclipse 단축키
+
+> 글자크기 조절 : ctrl + shift + '+','-'
+> 제안 : ctrl + 1
+> 자동완성 : ctrl + space
+> 줄 단위 복사 : ctrl + alt + 위, 아래 방향키
+> 줄 단위 이동 : alt + 위, 아래 방향키
+> 블록단위 영역 선택 : shift + alt + 위, 아래 방향키
+> 자동 import : ctrl+shift+o
+> run : ctrl+f11
