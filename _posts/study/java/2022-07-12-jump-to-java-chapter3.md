@@ -109,3 +109,156 @@ public static String getSex(String num) {
   }
 }
 ```
+
+## Q5
+다음과 같은 문자열 `a:b:c:d`가 있다. 문자열의 replace 함수를 사용하여 `a#b#c#d`로 바꿔서 출력해 보자.
+
+
+```java
+public class Q5 {
+
+	public static void main(String[] args) {
+
+		String a = "a:b:c:d";		
+		System.out.println(a.replace(":", "#"));
+	}
+
+}
+```
+
+## Q6
+다음과 같은 [1, 3, 5, 4, 2] 리스트를 [5, 4, 3, 2, 1]로 만들어 보자.
+
+```java
+package jumpToJava;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Q6 {
+    public static void main(String[] args) {
+        ArrayList<Integer> myList = new ArrayList<>(Arrays.asList(1, 3, 5, 4, 2));
+
+        Collections.sort(myList, Collections.reverseOrder());
+        System.out.println(myList);
+    }
+}
+```
+
+## Q7
+다음과 같은 ['Life', 'is', 'too', 'short'] 리스트를 "Life is too short" 문자열로 만들어 출력해 보자.
+
+```java
+package jumpToJava;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Q7 {
+    public static void main(String[] args) {
+        ArrayList<String> myList = new ArrayList<>(Arrays.asList("Life", "is", "too", "short"));
+
+		String str = String.join(" ", myList);
+		System.out.println(str);
+    }
+}
+```
+
+## Q8
+다음의 맵 grade에서 "B'에 해당되는 값을 추출해 보자. (추출하고 나면 grade에는 "B"에 해당하는 아이템이 사라져야 한다.)
+
+```java
+package jumpToJava;
+
+import java.util.HashMap;
+
+public class Q8 {
+    public static void main(String[] args) {
+        HashMap<String, Integer> grade = new HashMap<>();
+        grade.put("A", 90);
+        grade.put("B", 80);
+        grade.put("C", 70);
+
+        System.out.println(grade.remove("B"));  // "B"의 값 출력
+        System.out.println(grade.toString()); // {A=90, C=70}
+    }
+}
+```
+
+## Q9
+다음의 numbers 리스트에서 중복 숫자를 제거해 보자.
+
+```java
+package jumpToJava;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Q9 {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5));
+        HashSet<Integer> set = new HashSet<>(numbers);
+        System.out.println(set);
+    }
+}
+```
+
+## Q10
+다음은 커피의 종류(1: 아메리카노, 2:아이스 아메리카노, 3:카페라떼)를 입력하면 커피의 가격을 알려주는 프로그램이다.
+
+> **개선 전**
+```java
+package jumpToJava;
+
+import java.util.HashMap;
+
+public class Q10 {
+    static void printCoffeePrice(int type) {
+        HashMap<Integer, Integer> priceMap = new HashMap<>();
+        priceMap.put(1, 3000);  // 1: 아메리카노
+        priceMap.put(2, 4000);  // 2: 아이스 아메리카노
+        priceMap.put(3, 5000);  // 3: 카페라떼
+        int price = priceMap.get(type);
+        System.out.println(String.format("가격은 %d원 입니다.", price));
+    }
+
+    public static void main(String[] args) {
+        printCoffeePrice(1);  // "가격은 3000원 입니다." 출력
+        printCoffeePrice(99);  // NullPointerException 발생
+    }
+}
+```
+
+> **개선 후** (Enum)
+
+```java
+package jumpToJava;
+
+import java.util.HashMap;
+
+public class Q10 {
+	enum CoffeeType {
+		AMERICANO,
+		ICE_AMERICANO,
+		CAFE_LATTE
+	};
+
+
+    static void printCoffeePrice(CoffeeType type) {
+        HashMap<CoffeeType, Integer> priceMap = new HashMap<>();
+        priceMap.put(CoffeeType.AMERICANO, 3000);  
+        priceMap.put(CoffeeType.ICE_AMERICANO, 4000);          
+        priceMap.put(CoffeeType.CAFE_LATTE, 5000);          
+        int price = priceMap.get(type);
+        System.out.println(String.format("가격은 %d원 입니다.", price));
+    }
+
+    public static void main(String[] args) {
+        printCoffeePrice(CoffeeType.CAFE_LATTE);  // "가격은 5000원 입니다." 출력
+    }
+}
+```
+-> 엉뚱한 숫자값에 의한 오류가 발생하지 않는다.
+-> 매직넘버를 사용할 대보다 코드가 명확해 진다.
